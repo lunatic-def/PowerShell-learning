@@ -51,6 +51,7 @@ True     True     Boolean                                  System.ValueT…
 ($value1 -eq $value5)
 ($value1 -eq $value5).GetType()
 ```
+
 Outputs:
 ```cmd
 False
@@ -59,7 +60,7 @@ IsPublic IsSerial Name                                     BaseType
 -------- -------- ----                                     --------       
 True     True     Boolean                                  System.ValueT… 
 
-``
+```
 
 
 # 4- Pre-declared value
