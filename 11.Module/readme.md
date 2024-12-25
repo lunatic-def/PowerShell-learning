@@ -68,3 +68,8 @@ Version              Name                                Repository           De
 ```
 
 # Uninstall Modules
+- Need to run as Administrator:
+```ps
+Remove-Module AzureAD
+Uninstall-Module -Name AzureAD
+```
