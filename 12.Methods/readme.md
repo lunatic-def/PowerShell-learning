@@ -1,3 +1,5 @@
+
+## Method 1
 # Create function with paramter input
 ```ps
 $ConfigPath="C:\Users\Thu Ngan\Code\Powershell\PowerShell-learning\12.Methods\Configs"
@@ -91,4 +93,40 @@ Create a configuration name: Test2 with version 1.0.0
 Create a configuration name: Test3 with version 1.0.0
 -a---          12/25/2024  5:29 PM              0 Test3.cfg
 ######### This is the end block
-``
+```
+
+## Method 2
+
+**Get value from CustomObj**
+- `ValueFromPipelineByPropertyName` -> allows a cmdlet to accept input from a property of an object that is passed through the pipeline.
+
+```ps
+$ConfigPath="C:\Users\Thu Ngan\Code\Powershell\PowerShell-learning\12.Methods\Configs"
+
+function Create-Configuration {
+...
+}
+
+$IIServer =[PSCustomObject]@{
+    Name = 'IISServer2022'
+    Version = '1.0.3'
+    OperatingSystem = 'Windows'
+}
+
+$IIServer | Create-Configuration -Path $ConfigPath
+```
+
+
+**Get Value from CSV file**
+```csv
+Name,Version,OperatingSystem
+IISServer2022,1.0.3,Windows
+HyperV2016,1.2.1,Windows
+ELKStack,1.0.5,Linux
+```
+
+```ps
+$ServerCSV = Import-Csv -Path "C:\Users\Thu Ngan\Code\Powershell\PowerShell-learning\12.Methods\servers.csv" -Delimiter ','
+
+$ServerCSV | Create-Configuration -Path $ConfigPath -Verbose
+```
